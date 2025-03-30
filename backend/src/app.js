@@ -34,7 +34,7 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({extended:false}));
 
 app.use("/api/v1/auth", authRouter);
-// app.use("/api/v1/roadmap", roadmapRouter);
+app.use("/api/v1/roadmap", roadmapRouter);
 app.use("/api/v1/test", testRouter);
 
 
