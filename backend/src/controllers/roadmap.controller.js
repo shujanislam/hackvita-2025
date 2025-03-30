@@ -5,6 +5,9 @@ dotenv.config();
 const ai = new GoogleGenAI({ apiKey: process.env.GEN_AI_API_KEY });
 
 async function generateRoadmap(req, res, next) {
+
+const { topic } =  req.body
+
 const resSchema = {
     type:Type.ARRAY,
     items: {
@@ -29,7 +32,7 @@ const resSchema = {
     }
 };
 
-const prompt = `create a roadmap for studying complete Thermodynamics with all topics and subtopics,
+const prompt = `create a roadmap for studying complete ${topic} with all topics and subtopics,
     level: beginner,
     english_understanding_capability: 5 out of 10,
     Grasping_Power: 4 out of 10
@@ -63,7 +66,7 @@ return res.status(200).json({success:true, response: structuredResponse});
 }
 
 async function generateContent(req, res, next) {
-    const topic="Basic Concepts: System, Surroundings, Boundary";
+    const {topic} = req.body;
     const resSchema = {
         type:Type.ARRAY,
         items: {
