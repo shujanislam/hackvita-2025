@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const authRouter = require("./routes/auth.route.js");
 const roadmapRouter = require("./routes/roadmap.route.js");
+const testRouter = require("./routes/test.route.js");
 
 dotenv.config();
 const app = express();
@@ -33,7 +34,8 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({extended:false}));
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/roadmap", roadmapRouter);
+// app.use("/api/v1/roadmap", roadmapRouter);
+app.use("/api/v1/test", testRouter);
 
 
 module.exports = app;
