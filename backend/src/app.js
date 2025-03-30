@@ -8,6 +8,7 @@ const roadmapRouter = require("./routes/roadmap.route.js");
 const testRouter = require("./routes/test.route.js");
 const recommendationRouter = require('./routes/recommendation.route.js');
 const trendingRouter = require('./routes/trending.route.js');
+const summaryRouter = require("./routes/summary.routes.js");
 
 dotenv.config();
 const app = express();
@@ -40,6 +41,7 @@ app.use("/api/v1/roadmap", roadmapRouter);
 app.use("/api/v1/test", testRouter);
 app.use('/', recommendationRouter);
 app.use('/', trendingRouter);
+app.use("/",summaryRouter);
 
 
 module.exports = app;
