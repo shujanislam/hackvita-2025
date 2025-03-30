@@ -4,8 +4,7 @@ dotenv.config();
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEN_AI_API_KEY });
 
-
-async function get_10_questions() {
+const get_10_questions = async (req, res) => {
 
 const resSchema = {
     type: Type.ARRAY,
@@ -87,9 +86,20 @@ const resSchema = {
         },
     });
 
-    console.debug(response.text);
-    return response.text
+    let rawText = response.text.trim();
+
+        // Remove markdown code block (```json ... ```)
+        if (rawText.startsWith("```json")) {
+            rawText = rawText.slice(7, -3).trim();
+        } else if (rawText.startsWith("```")) {
+            rawText = rawText.slice(3, -3).trim();
+        }
+
+    const structuredResponse = JSON.parse(rawText)
+
+    // console.debug(response.text);
+    return res.status(200).json({success:true, response: structuredResponse});
 }
 
-module.exports = get_10_questions;
+module.exports = {get_10_questions};
 
