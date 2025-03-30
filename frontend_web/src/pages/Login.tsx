@@ -27,7 +27,7 @@ const Login = () => {
 
       if (response.ok) {
         console.log('Login successful:', data);
-        await navigate('/');
+        await navigate('/course');
         window.location.reload()
       }
     } catch (error) {

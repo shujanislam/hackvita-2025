@@ -70,7 +70,7 @@ const login = async (req, res, next) => {
         // Create an empty User instance to use its find method
         const userInstance = new User({});
         const users = await userInstance.find({ email });
-        
+ 
         // Check if user exists
         if (users.length === 0) {
             return res.status(400).json({ success: false, message: `User not found.` });
@@ -109,6 +109,7 @@ const login = async (req, res, next) => {
             message: "User logged in successfully.", 
             user: userWithoutPassword 
         });
+
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });
     }

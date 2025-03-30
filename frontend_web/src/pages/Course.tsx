@@ -10,6 +10,8 @@ type Content = {
   lesson: string;
 };
 
+import Navbar from '../componenets/Navbar.tsx';
+
 const Course = () => {
   const [roadmaps, setRoadmaps] = useState<Roadmap[]>([]);
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
@@ -43,11 +45,12 @@ const Course = () => {
         console.error('Error:', error);
       }
     };
-
     fetchRoadmaps();
   }, []);
 
   return (
+  <>
+    <Navbar />
     <div className='p-4'>
       <div className='flex'>
         <div className='w-1/3 p-4 bg-gray-100 rounded-lg'>
@@ -85,6 +88,7 @@ const Course = () => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 
