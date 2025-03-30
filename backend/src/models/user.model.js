@@ -1,14 +1,13 @@
 const BaseModel = require("./base.model");
 
 class User extends BaseModel {
-    constructor({ name, email, phone, gender, dob, password}) {
+    constructor({ name, email, phone, grade, password}) {
         super('users');
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.grade = grade;
         this.password = password;
-        this.gender = gender;
-        this.dob = dob;
     }
 
     static findOne(criteria) {
