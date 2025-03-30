@@ -4,6 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const authRouter = require("./routes/auth.route.js");
+const recommendationRouter = require('./routes/recommendation.route.js');
 
 dotenv.config();
 const app = express();
@@ -32,6 +33,7 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({extended:false}));
 
 app.use("/api/v1/auth", authRouter);
+app.use('/', recommendationRouter);
 
 
 module.exports = app;
