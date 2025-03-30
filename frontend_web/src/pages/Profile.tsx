@@ -13,7 +13,7 @@ const Profile = () => {
 
   return (
     <div>
-      <div>Welcome {user?.user?.name} to Hackvita</div>
+      <div>Welcome {user?.name} to Hackvita</div>
       <div>You have been authenticated</div>
       <button>Logout</button>
     </div>

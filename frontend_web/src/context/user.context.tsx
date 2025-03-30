@@ -9,6 +9,11 @@ type IUser = {
     dob: string;
 };
 
+type ProfileResponse = {
+    success: boolean;
+    user: IUser;
+};
+
 type UserContextType = {
     user: IUser | null;
     setUser: (user: IUser | null) => void;
@@ -32,8 +37,8 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
             if (!response.ok) {
                 throw new Error("Failed to fetch user");
             }
-            const data: IUser = await response.json();
-            setUser(data);
+            const data: ProfileResponse = await response.json();
+            setUser(data.user);
         } catch (error) {
             setUser(null);
         } finally {
@@ -46,7 +51,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     return (
-        <UserContext.Provider value={{ user, setUser, loading, fetchUser }}>
+        <UserContext.Provider value={{ user , setUser, loading, fetchUser }}>
             {children}
         </UserContext.Provider>
     );

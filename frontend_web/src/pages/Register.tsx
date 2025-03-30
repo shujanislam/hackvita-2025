@@ -6,10 +6,9 @@ const Register = () => {
     name: "",
     email: "",
     phone: "",
-    gender: "",
+    grade: "",
     password: "",
-    confirmPassword: "",
-    dob: "",
+    confirmPassword: ""
   });
 
   const navigate = useNavigate();
@@ -37,7 +36,7 @@ const Register = () => {
 
       const data = await response.json();
       if (data.success) {
-        await navigate("/user/login");
+        await navigate("/");
         window.location.reload();
       } else {
         alert(data.message);
@@ -47,7 +46,6 @@ const Register = () => {
       alert("Something went wrong!");
     }
   };
- 
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
@@ -89,7 +87,7 @@ const Register = () => {
 
             <input
               type="tel"
-              placeholder="Phone"
+              placeholder="Phone Number"
               value={registerData.phone}
               onChange={(e) =>
                 setRegisterData({ ...registerData, phone: e.target.value })
@@ -98,25 +96,12 @@ const Register = () => {
               className="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400 outline-none"
             />
 
-            <select
-              value={registerData.gender}
-              onChange={(e) =>
-                setRegisterData({ ...registerData, gender: e.target.value })
-              }
-              required
-              className="w-full p-3 border rounded bg-white focus:ring-2 focus:ring-blue-400 outline-none"
-            >
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-
             <input
-              type="date"
-              value={registerData.dob}
+              type="text"
+              placeholder="Grade/Standard (e.g., B.Tech in CSE)"
+              value={registerData.grade}
               onChange={(e) =>
-                setRegisterData({ ...registerData, dob: e.target.value })
+                setRegisterData({ ...registerData, grade: e.target.value })
               }
               required
               className="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400 outline-none"
@@ -138,10 +123,7 @@ const Register = () => {
               placeholder="Confirm Password"
               value={registerData.confirmPassword}
               onChange={(e) =>
-                setRegisterData({
-                  ...registerData,
-                  confirmPassword: e.target.value,
-                })
+                setRegisterData({ ...registerData, confirmPassword: e.target.value })
               }
               required
               className="w-full p-3 border rounded focus:ring-2 focus:ring-blue-400 outline-none"
