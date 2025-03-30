@@ -11,6 +11,8 @@ router.get(`/trending/:userId`, async (req, res)=>{
 
   console.log(trendingVideo);
 
+  res.status(200).json(trendingVideo)
+
 })
 
 module.exports = router;

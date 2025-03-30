@@ -1,94 +1,120 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import Navbar from "../componenets/Navbar.tsx";
 
-type Roadmap = {
-  Topic_Name: string;
-  subtopics: string[];
+type Video = {
+  title: string;
+  link: string;
 };
-
-type Content = {
-  heading: string;
-  lesson: string;
-};
-
-import Navbar from '../componenets/Navbar.tsx';
 
 const Course = () => {
-  const [roadmaps, setRoadmaps] = useState<Roadmap[]>([]);
-  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-  const [selectedSubtopic, setSelectedSubtopic] = useState<string | null>(null);
-  const [selectedContents] = useState<Content[]>([{
-    heading: 'Introduction to Systems',
-    lesson: 'A system is a specific region in space or a quantity of matter chosen for study. Defining the system accurately is crucial for thermodynamics calculations and observations.',
-  }]);
+  const [recommendedVideos, setRecommendedVideos] = useState<Video[]>([]);
+  const [trendingVideos, setTrendingVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchRoadmaps = async () => {
+    const fetchVideos = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/roadmap/generate`,
-            {
-                method: 'POST',
-                credentials: 'include',
-            }
-        );
-        if (!response.ok) {
-          throw new Error('Failed to fetch roadmaps');
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/recommendation/abc123`);
+
+        if (response.ok) {
+          let data = await response.json();
+          console.log("Fetched videos:", data);
+          setRecommendedVideos(data); // ✅ Store the fetched data
+        } else {
+          console.log("API request failed");
         }
-        const data = await response.json();
-        setRoadmaps(data.response);
-        
-        // Set initial topic and subtopic when data is available
-        if (data.response.length > 0) {
-          setSelectedTopic(data.response[0].Topic_Name);
-          setSelectedSubtopic(data.response[0].subtopics[0]);
-        }
-      } catch (error) {
-        console.error('Error:', error);
+      } catch (err) {
+        console.error("Fetch error:", err);
+      } finally {
+        setLoading(false);
       }
     };
-    fetchRoadmaps();
-  }, []);
+
+    fetchVideos();
+
+    const fetchTrendingVideos = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/trending/abc123`);
+
+        if (response.ok) {
+          let data = await response.json();
+          console.log("Fetched videos:", data);
+          setTrendingVideos(data); // ✅ Store the fetched data
+        } else {
+          console.log("API request failed");
+        }
+      } catch (err) {
+        console.error("Fetch error:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTrendingVideos();
+  }, []); 
 
   return (
-  <>
-    <Navbar />
-    <div className='p-4'>
-      <div className='flex'>
-        <div className='w-1/3 p-4 bg-gray-100 rounded-lg'>
-          {roadmaps.map((roadmap) => (
-            <div key={roadmap.Topic_Name} className='mb-2'>
-              <h3 
-                className={`cursor-pointer p-2 font-bold ${selectedTopic === roadmap.Topic_Name ? 'text-blue-600' : 'text-gray-800'}`}
-                onClick={() => setSelectedTopic(roadmap.Topic_Name)}
-              >
-                {roadmap.Topic_Name}
-              </h3>
-              {selectedTopic === roadmap.Topic_Name && (
-                <ul className='pl-4'>
-                  {roadmap.subtopics.map((subtopic) => (
-                    <li
-                      key={subtopic}
-                      className={`cursor-pointer p-1 ${selectedSubtopic === subtopic ? 'text-blue-500 font-bold' : 'text-gray-700'}`}
-                      onClick={() => setSelectedSubtopic(subtopic)}
-                    >
-                      {subtopic}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
-        <div className='w-2/3 p-4 bg-white rounded-lg shadow'>
-          {selectedContents.map((content, index) => (
-            <div key={index}>
-              <h3 className='text-xl font-bold mb-2'>{content.heading}</h3>
-              <p className='text-gray-700'>{content.lesson}</p>
-            </div>
-          ))}
-        </div>
+    <>
+      <Navbar />
+
+      <div className="p-4">
+        <h2 className="text-2xl font-bold mb-4">Recommended Videos</h2>
+
+        {loading ? (
+          <p className="text-gray-500">Loading videos...</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {recommendedVideos.length > 0 ? (
+              recommendedVideos.map((video, index) => (
+                <a 
+                  key={index} 
+                  href={video.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="block bg-white shadow-md p-4 rounded-lg hover:shadow-lg transition"
+                >
+                  <div className="h-32 bg-gray-200 flex items-center justify-center text-gray-500 text-lg font-semibold">
+                    Thumbnail
+                  </div>
+                  <h3 className="mt-2 text-lg font-semibold text-gray-900">{video.title}</h3>
+                </a>
+              ))
+            ) : (
+              <p className="text-gray-500">No videos found.</p>
+            )}
+          </div>
+        )}
       </div>
-    </div>
-  </>
+      <div className="p-4">
+        <h2 className="text-2xl font-bold mb-4">Trending Topics</h2>
+
+        {loading ? (
+          <p className="text-gray-500">Loading videos...</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {trendingVideos.length > 0 ? (
+              trendingVideos.map((video, index) => (
+                <a 
+                  key={index} 
+                  href={video.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="block bg-white shadow-md p-4 rounded-lg hover:shadow-lg transition"
+                >
+                  <div className="h-32 bg-gray-200 flex items-center justify-center text-gray-500 text-lg font-semibold">
+                    Thumbnail
+                  </div>
+                  <h3 className="mt-2 text-lg font-semibold text-gray-900">{video.title}</h3>
+                </a>
+              ))
+            ) : (
+              <p className="text-gray-500">No videos found.</p>
+            )}
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

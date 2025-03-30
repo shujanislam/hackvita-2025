@@ -16,7 +16,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
-            <a href="/courses" className="text-gray-700 dark:text-gray-300 hover:text-blue-600">Courses</a>
+            <a href="/course" className="text-gray-700 dark:text-gray-300 hover:text-blue-600">Courses</a>
             <a href="/dashboard" className="text-gray-700 dark:text-gray-300 hover:text-blue-600">Dashboard</a>
             <a href="/community" className="text-gray-700 dark:text-gray-300 hover:text-blue-600">Community</a>
             <a href="/support" className="text-gray-700 dark:text-gray-300 hover:text-blue-600">Support</a>
@@ -46,7 +46,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden px-4 pt-2 pb-3 space-y-2 bg-white dark:bg-gray-800">
-          <a href="/courses" className="block text-gray-700 dark:text-gray-300">Courses</a>
+          <a href="/course" className="block text-gray-700 dark:text-gray-300">Courses</a>
           <a href="/dashboard" className="block text-gray-700 dark:text-gray-300">Dashboard</a>
           <a href="/community" className="block text-gray-700 dark:text-gray-300">Community</a>
           <a href="/support" className="block text-gray-700 dark:text-gray-300">Support</a>

@@ -16,13 +16,57 @@ const users = [
 ];
 
 const videos = [
-    { title: "AI in 2025: What’s Next?", summary: "A deep dive into the future of artificial intelligence.", link: "https://example.com/ai-2025" },
-    { title: "How to Start Coding", summary: "A beginner-friendly guide to learning programming.", link: "https://example.com/start-coding" },
-    { title: "VR Gaming: The Future of Entertainment", summary: "Exploring the evolution of virtual reality gaming.", link: "https://example.com/vr-gaming" },
-    { title: "Streaming Setup Guide", summary: "How to set up a high-quality streaming environment.", link: "https://example.com/streaming-setup" },
-    { title: "Intro to Linear Algebra", summary: "Learning Math for AI in easy way", link: "https://example.com/streaming-setup" },
+  {
+    title: "JavaScript Crash Course For Beginners",
+    summary: "A comprehensive guide to JavaScript fundamentals.",
+    link: "https://www.youtube.com/watch?v=hdI2bqOjy3c"
+  },
+  {
+    title: "Python Full Course - Learn Python in 12 Hours",
+    summary: "An in-depth tutorial covering Python basics to advanced concepts.",
+    link: "https://www.youtube.com/watch?v=rfscVS0vtbw"
+  },
+  {
+    title: "React JS Crash Course",
+    summary: "Learn the fundamentals of React.js in this crash course.",
+    link: "https://www.youtube.com/watch?v=w7ejDZ8SWv8"
+  },
+  {
+    title: "Node.js Tutorial for Beginners: Learn Node in 1 Hour",
+    summary: "A quick introduction to Node.js for beginners.",
+    link: "https://www.youtube.com/watch?v=TlB_eWDSMt4"
+  },
+  {
+    title: "Learn HTML5 and CSS3 From Scratch - Full Course",
+    summary: "A complete guide to building websites with HTML5 and CSS3.",
+    link: "https://www.youtube.com/watch?v=mU6anWqZJcc"
+  },
+  {
+    title: "Django Full Stack Tutorial - Python Django Web Framework",
+    summary: "Learn how to build web applications using Django.",
+    link: "https://www.youtube.com/watch?v=F5mRW0jo-U4"
+  },
+  {
+    title: "Flutter Tutorial for Beginners - Build iOS & Android Apps",
+    summary: "An introduction to Flutter for mobile app development.",
+    link: "https://www.youtube.com/watch?v=fis26HvvDII"
+  },
+  {
+    title: "Kotlin Full Course - Learn Kotlin in 8 Hours",
+    summary: "A comprehensive tutorial on Kotlin programming language.",
+    link: "https://www.youtube.com/watch?v=F9UC9DY-vIU"
+  },
+  {
+    title: "C++ Tutorial for Beginners - Full Course",
+    summary: "Learn C++ programming from scratch in this full course.",
+    link: "https://www.youtube.com/watch?v=vLnPwxZdW4Y"
+  },
+  {
+    title: "PHP Programming Language Tutorial - Full Course",
+    summary: "A complete guide to PHP programming for web development.",
+    link: "https://www.youtube.com/watch?v=OK_JCtrrv-c"
+  }
 ];
-
 async function getRecommendationResponse(userId) {
     try {
         const user = users.find((u) => u.id === userId);

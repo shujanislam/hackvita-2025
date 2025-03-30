@@ -28,31 +28,56 @@ const users = [
 ];
 
 const videos = [
-    {
-        title: "AI in 2025: What’s Next?",
-        summary: "A deep dive into the future of artificial intelligence.",
-        link: "https://example.com/ai-2025",
-    },
-    {
-        title: "How to Start Coding",
-        summary: "A beginner-friendly guide to learning programming.",
-        link: "https://example.com/start-coding",
-    },
-    {
-        title: "VR Gaming: The Future of Entertainment",
-        summary: "Exploring the evolution of virtual reality gaming.",
-        link: "https://example.com/vr-gaming",
-    },
-    {
-        title: "Streaming Setup Guide",
-        summary: "How to set up a high-quality streaming environment.",
-        link: "https://example.com/streaming-setup",
-    },
-    {
-        title: "Intro to Linear Algebra",
-        summary: "Learning Math for AI in an easy way",
-        link: "https://example.com/linear-algebra",
-    },
+  {
+    title: "Coding in 2025: What's Changing That You Aren’t Ready For?",
+    summary: "An exploration of the significant changes in the tech world in 2025, including groundbreaking AI tools and shifts in developer workflows.",
+    link: "https://www.youtube.com/watch?v=PQKlG7R1EWg"
+  },
+  {
+    title: "2025 Programming: Trends, Insights, and Top Picks",
+    summary: "A comprehensive overview of the top programming languages to learn in 2025, backed by real statistics and trends.",
+    link: "https://www.youtube.com/watch?v=Xo31b-JkpBE"
+  },
+  {
+    title: "Top Programming Languages to Learn in 2025",
+    summary: "A guide to future-proofing your coding skills by discovering the programming languages that will dominate in 2025, with real-world use cases and career insights.",
+    link: "https://www.youtube.com/watch?v=NClmyC6olC0"
+  },
+  {
+    title: "Top 10 Programming Trends in 2025",
+    summary: "An analysis of the top 10 programming trends shaping the future of software development in 2025.",
+    link: "https://learnerbits.com/top-10-programming-trends-in-2025/"
+  },
+  {
+    title: "Top 16 Programming Trends to Look Out for in 2025",
+    summary: "An article discussing the 16 most significant programming trends to watch in 2025, including the rise of AI and machine learning.",
+    link: "https://www.outsourceaccelerator.com/articles/programming-trends/"
+  },
+  {
+    title: "25 Best Future Programming Languages for 2025 – 2040",
+    summary: "An in-depth look at the 25 programming languages expected to shape the future from 2025 to 2040.",
+    link: "https://www.scaler.com/blog/future-programming-languages/"
+  },
+  {
+    title: "Programming Trends 2025: Insights and Predictions",
+    summary: "A comprehensive analysis of programming trends in 2025, providing insights and predictions for the future.",
+    link: "https://www.aegona.com/software-development/programming-trends-2025-insights-and-predictions"
+  },
+  {
+    title: "Coding Trends to Watch in 2025",
+    summary: "An overview of the coding trends to watch in 2025, including sustainability in software development and polyglot programming.",
+    link: "https://customizeddev.pythonanywhere.com/blogs/coding-trends-to-watch-in-2025/"
+  },
+  {
+    title: "Top Programming Trends in 2025: What You Need to Know",
+    summary: "A discussion on the top programming trends in 2025, covering AI, machine learning, cloud-native development, and quantum computing.",
+    link: "https://toxigon.com/top-programming-trends-in-2025"
+  },
+  {
+    title: "2025 Coding Trends – AI, Low-Code & More Innovations",
+    summary: "An exploration of the coding trends in 2025, focusing on AI-driven coding, low-code/no-code platforms, and new programming languages.",
+    link: "https://www.telegramevening.com/will-ai-redefine-coding-2025/"
+  }
 ];
 
 async function getTrendingVideoResponse(userId) {

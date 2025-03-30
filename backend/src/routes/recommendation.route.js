@@ -11,6 +11,8 @@ router.get(`/recommendation/:userId`, async (req, res)=>{
 
   console.log(recommendedVideo);
 
+  res.status(200).json(recommendedVideo);
+
 })
 
 module.exports = router;

@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Landing from './pages/Landing';
 import { useUser } from './context/user.context';
 import Course from './pages/Course';
+import Dashboard from './pages/Dashboard';
 
 
 function App() {
@@ -44,11 +45,12 @@ function App() {
     <>
     <Router>
       <Routes>
-        <Route path="/" element={isAuthenticated ? <Profile /> : <Landing />} />
+        <Route path="/" element={isAuthenticated ? <Dashboard /> : <Landing />} />
         <Route path="/user/profile" element={<Profile />} />
         <Route path="/user/register" element={<Register />} />
         <Route path="/user/login" element={<Login />} />
         <Route path="/course" element={<Course />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   </>
