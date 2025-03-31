@@ -15,7 +15,7 @@ const Course = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/recommendation/abc123`);
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/load-recommendation`);
 
         if (response.ok) {
           let data = await response.json();
@@ -35,7 +35,7 @@ const Course = () => {
 
     const fetchTrendingVideos = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/trending/abc123`);
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/load-trending`);
 
         if (response.ok) {
           let data = await response.json();

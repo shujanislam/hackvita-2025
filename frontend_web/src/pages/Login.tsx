@@ -28,6 +28,8 @@ const Login = () => {
       if (response.ok) {
         console.log('Login successful:', data);
         await navigate('/course');
+        const responseLoad = await fetch(`${import.meta.env.VITE_BASE_URL}/recommendation/xyz123`);
+        const trendingLoad = await fetch(`${import.meta.env.VITE_BASE_URL}/trending/xyz123`);
         window.location.reload()
       }
     } catch (error) {
